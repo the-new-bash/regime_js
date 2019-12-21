@@ -1,10 +1,11 @@
 {
   "name": "regime_js",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Australian Open Banking API NodeJS client.",
-  "main": "index.js",
+  "main": "cli.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha",
+    "coverage": "nyc npm run test"
   },
   "repository": {
     "type": "git",
@@ -12,6 +13,9 @@
   },
   "author": "Nikki Renvoize",
   "license": "ISC",
+  "bin": {
+    "regime": "./cli.js"
+  },
   "bugs": {
     "url": "https://github.com/the-new-bash/regime_js/issues"
   },

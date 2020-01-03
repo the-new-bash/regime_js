@@ -4,8 +4,7 @@
   "description": "Australian Open Banking API NodeJS client.",
   "main": "cli.js",
   "scripts": {
-    "test": "mocha",
-    "coverage": "nyc npm run test"
+    "test": "nyc mocha"
   },
   "repository": {
     "type": "git",

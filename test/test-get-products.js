@@ -3,9 +3,13 @@
 
 const getProducts = require('../lib/get-products.js')
 const chai = require('chai')
-const assert = chai.assert
+const chaiAsPromised = require("chai-as-promised");
+
+chai.use(chaiAsPromised);
+
 const expect = chai.expect
 const should = chai.should()
+
 let res
 
 describe('unit tests for get products', () => {
@@ -34,16 +38,37 @@ describe('unit tests for get products', () => {
             expect(res).to.have.property('data');
             expect(res.data).to.have.property('products')
         })
-        it('should throw an error when passed a bank that is not supported')
-        it('should populate xv min and xv with default values if they are not specified')
-        it('should throw an error when passed an invalid xv paramater')
-        it('should accept and optional paramaters and return an appropriate response')
+        it('should throw an error when passed a bank that is not supported', async () => {
+            return getProducts.callGetProductsApi('notABank', 1).should.be.rejectedWith(Error)
+        })
+
+        it('should throw an error when not passed a paramater for xv', async () => {
+            return getProducts.callGetProductsApi('ANZ').should.be.rejectedWith(Error)
+        })
+        it('should throw an error when not passed an argument for bank', async () => {
+            return getProducts.callGetProductsApi(null, 1).should.be.rejectedWith(Error)
+        })
+        it('should accept and optional paramaters and return an appropriate response', async () => {
+            let fullRes = await getProducts.callGetProductsApi('ANZ', 1)
+            res = await getProducts.callGetProductsApi('ANZ', 1, { "product-category": "TRANS_AND_SAVINGS_ACCOUNTS" })
+            res.should.be.an('object')
+            expect(res).to.have.property('data');
+            expect(res.data).to.have.property('products')
+            expect(res).to.not.equal(fullRes)
+        })
     })
     describe('unit tests for getAllProducts() Function', () => {
-
+        it('should return only an array', async () => {
+            let fullRes = await getProducts.callGetProductsApi('ANZ', 1)
+            let len = fullRes.meta.totalRecords
+            res = await getProducts.getProductsArray("ANZ", 1)
+            expect(Array.isArray(res))
+            expect(res.length).to.equal(len) // Check that the array contains the total number of products
+        })
+        it('should throw an error if passed incorrect input', async () => {
+            return getProducts.callGetProductsApi('ANZ').should.be.rejectedWith(Error)
+        })
 
     })
-    describe('unit tests for getProductCategory() Function', () => {
 
-    })
 })

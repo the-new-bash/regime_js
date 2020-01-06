@@ -2,7 +2,7 @@
   "name": "regime_js",
   "version": "1.0.2",
   "description": "Australian Open Banking API NodeJS client.",
-  "main": "cli.js",
+  "main": "index.js",
   "scripts": {
     "test": "nyc mocha"
   },
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "eslint": "^6.7.2",
     "mocha": "^6.2.2",
     "nyc": "^14.1.1"

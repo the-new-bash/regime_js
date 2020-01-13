@@ -58,23 +58,20 @@ async function getAllProducts(bank, xv) {
 
 }
 
+
 async function call() {
     let res
     try {
-        res = await callGetProductsApi('ANZ', 1, { "product-category": "TRANS_AND_SAVINGS_ACCOUNTS" }, { "page-size": 5 })
+        res = await callGetProductsApi('WBA', 1)
 
     } catch (error) {
         console.log(error)
-
     }
-    console.log(res)
+    console.log(res.data.products)
 
 }
+
 call()
-
-//console.log(c.PRODUCT_CATEGORIES)
-
-
 module.exports = {
     getAllProducts,
     callGetProductsApi

@@ -59,19 +59,6 @@ async function getAllProducts(bank, xv) {
 }
 
 
-async function call() {
-    let res
-    try {
-        res = await callGetProductsApi('WBA', 1)
-
-    } catch (error) {
-        console.log(error)
-    }
-    console.log(res.data.products)
-
-}
-
-call()
 module.exports = {
     getAllProducts,
     callGetProductsApi

@@ -27,7 +27,7 @@ describe('unit tests for get products', () => {
             expect(res.data).to.have.property('products')
         })
         it('should call and recieve a valid response from the ANZ endpoint', async () => {
-            res = await getProducts.callGetProductsApi('ANZ', 1)
+            res = await getProducts.callGetProductsApi('ANZ', 1, { "product-category": "TRANS_AND_SAVINGS_ACCOUNTS" })
             res.should.be.an('object')
             expect(res).to.have.property('data');
             expect(res.data).to.have.property('products')

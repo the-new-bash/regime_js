@@ -90,7 +90,7 @@ regime getAllProducts WBA 1 {{"product-category":"TRANS_AND_SAVINGS_ACCOUNTS"}}
 ```
 
 ### callGetProductsApi()
-```getAllProducts(bank, xv, [xvmin] [page-size], [page], [effective], [updated-since], [brand], [product-category], [page"], [page-size]) => Promise```
+```getAllProducts(bank, xv, [xvmin] [page-size], [page], [effective], [updated-since], [brand], [product-category]) => Promise```
 
 The CallGetProductsApi() function directly calls the endpoint of the specified bank using the specified version number. Any number or combination of CDR speficed filtering values may be used. The function will return the unfiltered response object. Please see [parameters](#Supported-Parameters) section for details of supported input. 
 

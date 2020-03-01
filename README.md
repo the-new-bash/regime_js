@@ -158,4 +158,5 @@ Details of the all supported paramaters can be found in the [Consumer Data Right
 |product-category	|BUSINESS_LOANS|getProducts(), callGetProductsApi()|
 ## Authors 
 Nikki Renvoize
+
 [Consumer Data Right Standard]:https://consumerdatastandardsaustralia.github.io/standards/#get-products 

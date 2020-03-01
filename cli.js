@@ -3,15 +3,16 @@
 
 const program = require('commander')
 const getProducts = require('./lib/get-products.js')
+const getProductDetails = require('./lib/get-product-details')
 
 program
     .command("getProductArray <bank>, <xv>")
     .option("-c, --product-Category <productCategory>", "The Product Category")
-    .option("-x, --xv-Min <xvMin>", "Minimum Version")
+    .option("-x, --xMinV <xMinV>", "Minimum Version")
     .option("-b, --brand <brand>", "The product brand")
     .option("-u, --updated-Since <updatedSince>", "Updated Since Date")
     .option("-e, --effective <effective>", "The effective period, CURRENT, FUTURE or ALL")
-    .description("gets the complete product array for a given bank and given filters")
+    .description("Returns the complete product array for a given bank and given filters")
     .action(async (bank, xv, options) => {
         let inputOptions = []
         if (options.productCategory) {
@@ -21,7 +22,7 @@ program
         }
         if (options.xvMin) {
             let param = {} // Create a parameter object
-            param["x-v-min"] = options.xvMin // Assign the supplied option value to the parameter obj
+            param["x-min-v"] = options.xMinV // Assign the supplied option value to the parameter obj
             inputOptions.push(param) // Push the pair int the input options array
         }
         if (options.brand) {
@@ -39,6 +40,8 @@ program
             param["effective"] = options.effective // Assign the supplied option value to the parameter obj
             inputOptions.push(param) // Push the pair int the input options array
         }
+        console.log(inputOptions)
+        console.log("hello")
 
         let res = await getProducts.getProductsArray(bank, xv, inputOptions)
 
@@ -49,7 +52,7 @@ program
 program
     .command("callProductsAPI <bank>, <xv>")
     .option("-c, --product-Category <productCategory>", "The Product Category")
-    .option("-x, --xv-Min <xvMin>", "Minimum Version")
+    .option("-x, --xMinV <xMinV>", "Minimum Version")
     .option("-b, --brand <brand>", "The product brand")
     .option("-u, --updated-Since <updatedSince>", "Updated Since Date")
     .option("-e, --effective <effective>", "The effective period, CURRENT, FUTURE or ALL")
@@ -67,7 +70,7 @@ program
         }
         if (options.xvMin) {
             let param = {} // Create a parameter object
-            param["x-v-min"] = options.xvMin // Assign the supplied option value to the parameter obj
+            param["x-min-v"] = options.xMinV // Assign the supplied option value to the parameter obj
             inputOptions.push(param) // Push the pair int the input options array
         }
         if (options.brand) {
@@ -105,11 +108,23 @@ program
         console.log(res)
     })
 
+program
+    .command("getProductDetails <bank>, <xv>, <productID>")
+    .option("-x, --xMinV <xminv>", "minimum version number")
+    .description("Returns the complete product details for a specified product ID")
+    .action(async (bank, xv, productID, options) => {
+        let res;
+        if (options.xMinV) {
+            try {
+                res = await getProductDetails.getProductDetails(bank, xv, productID, options.xminv)
+            } catch (error) {
+                console.log(error)
+            }
+        } else {
+            res = await getProductDetails.getProductDetails(bank, xv, productID)
+        }
+        console.log(res)
+    })
+
 program.parse(process.argv)
 
-
-program.on('--help', function () {
-    console.log('')
-    console.log('Examples:');
-
-});

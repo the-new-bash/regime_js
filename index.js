@@ -1,6 +1,7 @@
 'use strict'
 
 const getProducts = require('./lib/get-products.js')
+const getProductDetails = require('./lib/get-product-details.js')
 const c = require('./lib/constants.js')
 
 /** Calls the requested bank's api with the requested filters and returns the raw result
@@ -58,8 +59,21 @@ async function getAllProducts(bank, xv) {
 
 }
 
+async function callGetProductDetails(bank, xv, productID, xminv) {
+
+    let res
+
+    try {
+        res = await getProductDetails.getProductDetails(bank, xv, productID, xminv)
+    } catch (error) {
+        console.log(error)
+    }
+    return res
+}
+
 
 module.exports = {
     getAllProducts,
-    callGetProductsApi
+    callGetProductsApi,
+    callGetProductDetails
 }

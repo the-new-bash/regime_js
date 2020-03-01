@@ -124,6 +124,7 @@ $ regime callGetProductsAPI ANZ 1
 ### Get Product details API Functions 
 </br>
 *coming Soon*
+
 ## Supported Paramaters 
 Details of the all supported paramaters can be found in the [Consumer Data Right Standard]
 ### Get Products API Parameters 

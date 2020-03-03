@@ -125,6 +125,83 @@ $ regime callGetProductsAPI ANZ 1
 </br>
 *coming Soon*
 
+### callGetProductDetails()
+
+The callGetProductDetails() function calls the specified bank endpoint, for the specified productID. This endpoint does not support pagination or any custom paramaters. xminv is the only optional paramater. 
+
+```callGetProductDetails(bank, xv, productID, [xminv]) => Promise```
+
+***Examples***
+
+Running the code below 
+```js
+async function getProductDetails(){
+let res
+try {
+    res = await callGetProductDetails('ANZ', 1'3a86f9e4-1b41-4222-9091-5934d1fc9178')
+    } catch(error) {
+    console.log(error)
+}
+    console.log(res)
+}
+getProductDetails()
+```
+
+will return something like this:
+
+```js
+{{
+  data: {
+    lastUpdated: '2020-02-20T04:07:19.779670Z',
+    additionalInformation: {
+      eligibilityUri: 'URI',
+      feesAndPricingUri: 'URI',
+      termsUri: 'URI',
+      overviewUri: 'URI'
+    },
+    fees: [
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object], [Object],
+      [Object]
+    ],
+    isTailored: false,
+    lendingRates: [
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object], [Object],
+      [Object], [Object], [Object]
+    ],
+    productId: '3a86f9e4-1b41-4222-9091-5934d1fc9178',
+    name: 'Product Name String',
+    description: 'Product Description String',
+    applicationUri: 'URI',
+    effectiveFrom: '2020-02-20T13:00:00Z',
+    brand: 'ANZ',
+    productCategory: 'RESIDENTIAL_MORTGAGES'
+  },
+  meta: {},
+  links: {
+    self: 'URL'
+  }
+}
+
+  }
+}
+```
+From the command line
+```
+$ regime callGetProductDetailsApi ANZ 1 3a86f9e4-1b41-4222-9091-5934d1fc9178
+```
+
 ## Supported Paramaters 
 Details of the all supported paramaters can be found in the [Consumer Data Right Standard]
 ### Get Products API Parameters 

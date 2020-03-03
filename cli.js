@@ -109,7 +109,7 @@ program
     })
 
 program
-    .command("getProductDetails <bank>, <xv>, <productID>")
+    .command("callGetProductDetailsApi <bank>, <xv>, <productID>")
     .option("-x, --xMinV <xminv>", "minimum version number")
     .description("Returns the complete product details for a specified product ID")
     .action(async (bank, xv, productID, options) => {

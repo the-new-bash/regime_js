@@ -57,7 +57,7 @@ describe('unit tests for get products', () => {
             expect(res).to.not.equal(fullRes)
         })
     })
-    describe('unit tests for getAllProducts() Function', () => {
+    describe('unit tests for getProductsArray() Function', () => {
         it('should return only an array', async () => {
             let fullRes = await getProducts.callGetProductsApi('ANZ', 1)
             let len = fullRes.meta.totalRecords
@@ -66,7 +66,11 @@ describe('unit tests for get products', () => {
             expect(res.length).to.equal(len) // Check that the array contains the total number of products
         })
         it('should throw an error if passed incorrect input', async () => {
-            return getProducts.callGetProductsApi('ANZ').should.be.rejectedWith(Error)
+            return getProducts.getProductsArray('ANZ').should.be.rejectedWith(Error)
+        })
+        it('should throw an error when passed a value for pagination', async () => {
+            return getProducts.getProductsArray('ANZ', 1, { "page-size": "10" }).should.be.rejectedWith(Error)
+
         })
 
     })

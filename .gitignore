@@ -1,3 +1,4 @@
 node_modules
 nikki_testing
 .nyc_output
+.eslintrc

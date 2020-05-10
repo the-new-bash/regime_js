@@ -2,3 +2,7 @@ node_modules
 nikki_testing
 .nyc_output
 .eslintrc
+# logs
+npm-debug.log
+# Environment variables
+.env

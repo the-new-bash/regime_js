@@ -11,7 +11,7 @@ $ npm install regime
 
 Once installed the package can be used from the command line Example:
 
-```
+```bash
 $ regime getAllProducts ANZ 1
 ```
 Will return the entire products array for ANZ xv 1

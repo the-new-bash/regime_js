@@ -10,7 +10,10 @@
     "type": "git",
     "url": "git+https://github.com/the-new-bash/regime_js.git"
   },
-  "author": "Nikki Renvoize",
+  "author": {
+      "name": "Nikki Renvoize",
+      "url": "https://github.com/NikkiRen"
+  },
   "license": "ISC",
   "bin": {
     "regime": "./cli.js"

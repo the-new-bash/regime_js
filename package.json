@@ -4,13 +4,16 @@
   "description": "Australian Open Banking API NodeJS client.",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha"
+  "test": "npm audit --audit-level=moderate && eslint . && nyc mocha"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/the-new-bash/regime_js.git"
   },
-  "author": "Nikki Renvoize",
+  "author": {
+      "name": "Nikki Renvoize",
+      "url": "https://github.com/NikkiRen"
+  },
   "license": "ISC",
   "bin": {
     "regime": "./cli.js"
@@ -27,8 +30,8 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "eslint": "^6.7.2",
-    "mocha": "^6.2.2",
+    "eslint": "^6.8.0",
+    "mocha": "^6.2.3",
     "nyc": "^14.1.1",
     "prettier": "2.0.5"
   }

@@ -12,7 +12,7 @@ $ npm install regime
 
 Once installed the package can be used from the command line Example:
 
-```
+```bash
 $ regime getAllProducts ANZ 1
 ```
 
@@ -232,4 +232,8 @@ Details of the all supported paramaters can be found in the [Consumer Data Right
 
 Nikki Renvoize
 
+<<<<<<< HEAD
 [consumer data right standard]: https://consumerdatastandardsaustralia.github.io/standards/#get-products
+=======
+[Consumer Data Right Standard]:https://consumerdatastandardsaustralia.github.io/standards/#get-products 
+>>>>>>> 9a471dab11829bea4a32cf5f744062310c58d5eb

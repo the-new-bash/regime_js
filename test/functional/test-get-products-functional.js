@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 "use strict";
 
-const getProducts = require("../lib/get-products");
+const getProducts = require("../../lib/get-products");
 const chai = require("chai");
 const chaiAsPromised = require("chai-as-promised");
 

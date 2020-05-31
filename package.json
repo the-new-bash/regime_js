@@ -4,7 +4,9 @@
   "description": "Australian Open Banking API NodeJS client.",
   "main": "index.js",
   "scripts": {
-    "test": "npm audit --audit-level=moderate && eslint . && nyc mocha"
+    "test": "npm audit --audit-level=moderate && eslint . && nyc mocha test/**/*.js",
+    "funcTest": "mocha test/functional/**/*.js",
+    "unitTest": "mocha test/unit/**/*.js"
   },
   "repository": {
     "type": "git",

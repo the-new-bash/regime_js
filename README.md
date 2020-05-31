@@ -26,6 +26,28 @@ To use in your project require the package:
 const regime = require("regime-js");
 ```
 
+## Testing
+
+This unit contains both unit and functional tests so you can see the performance of the end points.
+
+To run both sets of tests including audit and code coverage run this command;
+
+```bash
+$ npm test
+```
+
+To only run the functional tests;
+
+```bash
+$ npm run-script funcTest
+```
+
+To only run the unit tests
+
+```bash
+$ npm run-script unitTest
+```
+
 ## Functions
 
 The functions available for use

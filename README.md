@@ -6,7 +6,7 @@ This client allows you to call the existing endopoints for the Australion Open B
 
 ## Installation and useage
 
-```
+```bash
 $ npm install regime
 ```
 
@@ -120,7 +120,7 @@ will return something like this:
 
 From command line
 
-```
+```bash
 $ regime callGetProductsAPI ANZ 1
 ```
 

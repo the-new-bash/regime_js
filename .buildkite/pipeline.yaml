@@ -6,7 +6,7 @@ steps:
   - label: ":rocket: package test"
     command:
       - cd ..
-      - npm publish regime_js --access public --dry-run
+      - npm publish ./regime_js --access public --dry-run
   - label: ":rocket: Build"
     if: build.branch == "master"
     command:

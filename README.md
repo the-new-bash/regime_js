@@ -106,10 +106,10 @@ The below will do the same from the command line with an optional parameter incl
 regime getProductArray WBA 1 {{"product-category":"TRANS_AND_SAVINGS_ACCOUNTS"}}
 ```
 
-### callGetProductsApi()
+### callGetProductsAPI()
 
 `getProductsArray(bank, xv, [xvmin] [page-size], [page], [effective], [updated-since], [brand], [product-category]) => Promise`
-The CallGetProductsApi() function directly calls the endpoint of the specified bank using the specified version number. Any number or combination of CDR speficed filtering values may be used. The function will return the unfiltered response object. Please see [parameters](#Supported-Parameters) section for details of supported input.
+The CallGetProductsAPI() function directly calls the endpoint of the specified bank using the specified version number. Any number or combination of CDR speficed filtering values may be used. The function will return the unfiltered response object. Please see [parameters](#Supported-Parameters) section for details of supported input.
 **_Examples_**
 Running the code below
 
@@ -118,7 +118,7 @@ const regime = require("regime_js");
 async function getProducts() {
   let res;
   try {
-    res = await regime.callGetProductsApi("ANZ", 1);
+    res = await regime.callGetProductsAPI("ANZ", 1);
   } catch (error) {
     console.log(error);
   }
@@ -156,7 +156,7 @@ $ regime callProductsAPI ANZ 1
 
 These functions use the product details endpoint for the specifed bank to return the specified data.
 
-### callGetProductDetails()
+### callGetProductDetailsAPI()
 
 The callGetProductDetails() function calls the specified bank endpoint, for the specified productID. This endpoint does not support pagination or any custom paramaters. xminv is the only optional paramater.
 
@@ -167,17 +167,20 @@ The callGetProductDetails() function calls the specified bank endpoint, for the 
 Running the code below
 
 ```js
-const regime = require("regime_js");
-async function getProductDetails(){
-let res
-try {
-    res = await regime.callGetProductDetails('ANZ', 1'3a86f9e4-1b41-4222-9091-5934d1fc9178')
-    } catch(error) {
-    console.log(error)
+async function getProductDetails() {
+  let res;
+  try {
+    res = await regime.callGetProductDetailsAPI(
+      "ANZ",
+      1,
+      "3a86f9e4-1b41-4222-9091-5934d1fc9178"
+    );
+  } catch (error) {
+    console.log(error);
+  }
+  console.log(res);
 }
-    console.log(res)
-}
-getProductDetails()
+getProductDetails();
 ```
 
 will return something like this:
@@ -217,7 +220,7 @@ will return something like this:
 From the command line
 
 ```bash
-$ regime callGetProductDetailsApi ANZ 1 3a86f9e4-1b41-4222-9091-5934d1fc9178
+$ regime callGetProductDetailsAPI ANZ 1 3a86f9e4-1b41-4222-9091-5934d1fc9178
 ```
 
 ## Supported Paramaters
@@ -228,33 +231,33 @@ Details of the all supported paramaters can be found in the [Consumer Data Right
 
 | Name             | Type            | Required  | Supported Functions                 | Description                                                                                                                                                                                                                                                                                                        |
 | ---------------- | --------------- | --------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| effective        | string          | optional  | getProducts(), callGetProductsApi() | Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'                                                              |
-| updated-since    | DateTimeString  | optional  | getProducts(), callGetProductsApi() | Only include products that have been updated after the specified date and time. If absent defaults to include all products                                                                                                                                                                                         |
-| brand            | string          | optional  | getProducts(), callGetProductsApi() | Filter results based on a specific brand                                                                                                                                                                                                                                                                           |
-| product-category | string          | optional  | gcallGetProductsApi()               | Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.                                                                                                                                      |
-| page             | PositiveInteger | optional  | callGetProductsApi()                | Page of results to request (standard pagination)                                                                                                                                                                                                                                                                   |
-| page-size        | PositiveInteger | optional  | callGetProductsApi()                | Page size to request. Default is 25 (standard pagination)                                                                                                                                                                                                                                                          |
-| x-v              | string          | mandatory | getProducts(), callGetProductsApi() |                                                                                                                                                                                                                                                                                                                    | Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between x-min-v and x-v. If the value of x-min-v is equal to or higher than the value of x-v then the x-min-v header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See HTTP Headers |
-| x-min-v          | string          | optional  | getProducts(), callGetProductsApi() | Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between x-min-v and x-v. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. |
+| effective        | string          | optional  | getProducts(), callGetProductsAPI() | Allows for the filtering of products based on whether the current time is within the period of time defined as effective by the effectiveFrom and effectiveTo fields. Valid values are ‘CURRENT’, ‘FUTURE’ and ‘ALL’. If absent defaults to 'CURRENT'                                                              |
+| updated-since    | DateTimeString  | optional  | getProducts(), callGetProductsAPI() | Only include products that have been updated after the specified date and time. If absent defaults to include all products                                                                                                                                                                                         |
+| brand            | string          | optional  | getProducts(), callGetProductsAPI() | Filter results based on a specific brand                                                                                                                                                                                                                                                                           |
+| product-category | string          | optional  | gcallGetProductsAPI()               | Used to filter results on the productCategory field applicable to accounts. Any one of the valid values for this field can be supplied. If absent then all accounts returned.                                                                                                                                      |
+| page             | PositiveInteger | optional  | callGetProductsAPI()                | Page of results to request (standard pagination)                                                                                                                                                                                                                                                                   |
+| page-size        | PositiveInteger | optional  | callGetProductsAPI()                | Page size to request. Default is 25 (standard pagination)                                                                                                                                                                                                                                                          |
+| x-v              | string          | mandatory | getProducts(), callGetProductsAPI() |                                                                                                                                                                                                                                                                                                                    | Version of the API end point requested by the client. Must be set to a positive integer. The data holder should respond with the highest supported version between x-min-v and x-v. If the value of x-min-v is equal to or higher than the value of x-v then the x-min-v header should be treated as absent. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. See HTTP Headers |
+| x-min-v          | string          | optional  | getProducts(), callGetProductsAPI() | Minimum version of the API end point requested by the client. Must be set to a positive integer if provided. The data holder should respond with the highest supported version between x-min-v and x-v. If all versions requested are not supported then the data holder should respond with a 406 Not Acceptable. |
 
 **Enumerated Values**
 |Parameter| Value|Supported Functions|
 |:--------- |:------ |:------ |
-|effective |CURRENT |getProducts(), callGetProductsApi()|
-|effective |FUTURE|getProducts(), callGetProductsApi()|
-|effective |ALL|getProducts(), callGetProductsApi()|
-|product-category |TRANS_AND_SAVINGS_ACCOUNTS|getProducts(), callGetProductsApi()|
-|product-category |TERM_DEPOSITS |getProducts(), callGetProductsApi()|
-|product-category |TRAVEL_CARDS |getProducts(), callGetProductsApi()|
-|product-category |REGULATED_TRUST_ACCOUNTS |getProducts(), callGetProductsApi()|
-|product-category |RESIDENTIAL_MORTGAGES |getProducts(), callGetProductsApi()|
-|product-category |CRED_AND_CHRG_CARDS |getProducts(), callGetProductsApi()|
-|product-category |PERS_LOANS |getProducts(), callGetProductsApi()|
-|product-category |MARGIN_LOANS |getProducts(), callGetProductsApi()|
-|product-category |LEASES |getProducts(), callGetProductsApi()|
-|product-category |TRADE_FINANCE |getProducts(), callGetProductsApi()|
-|product-category |OVERDRAFTS |getProducts(), callGetProductsApi()|
-|product-category |BUSINESS_LOANS|getProducts(), callGetProductsApi()|
+|effective |CURRENT |getProducts(), callGetProductsAPI()|
+|effective |FUTURE|getProducts(), callGetProductsAPI()|
+|effective |ALL|getProducts(), callGetProductsAPI()|
+|product-category |TRANS_AND_SAVINGS_ACCOUNTS|getProducts(), callGetProductsAPI()|
+|product-category |TERM_DEPOSITS |getProducts(), callGetProductsAPI()|
+|product-category |TRAVEL_CARDS |getProducts(), callGetProductsAPI()|
+|product-category |REGULATED_TRUST_ACCOUNTS |getProducts(), callGetProductsAPI()|
+|product-category |RESIDENTIAL_MORTGAGES |getProducts(), callGetProductsAPI()|
+|product-category |CRED_AND_CHRG_CARDS |getProducts(), callGetProductsAPI()|
+|product-category |PERS_LOANS |getProducts(), callGetProductsAPI()|
+|product-category |MARGIN_LOANS |getProducts(), callGetProductsAPI()|
+|product-category |LEASES |getProducts(), callGetProductsAPI()|
+|product-category |TRADE_FINANCE |getProducts(), callGetProductsAPI()|
+|product-category |OVERDRAFTS |getProducts(), callGetProductsAPI()|
+|product-category |BUSINESS_LOANS|getProducts(), callGetProductsAPI()|
 
 ## Authors
 

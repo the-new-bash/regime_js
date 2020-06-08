@@ -106,13 +106,13 @@ program
 
     let res;
 
-    res = await getProducts.callGetProductsApi(bank, xv, inputOptions);
+    res = await getProducts.callGetProductsAPI(bank, xv, inputOptions);
 
     console.log(res);
   });
 
 program
-  .command("callGetProductDetailsApi <bank>, <xv>, <productID>")
+  .command("callGetProductDetailsAPI <bank>, <xv>, <productID>")
   .option("-x, --xMinV <xminv>", "minimum version number")
   .description(
     "Returns the complete product details for a specified product ID"

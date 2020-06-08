@@ -3,3 +3,7 @@ steps:
     command:
       - npm install
       - npm test
+  - label: ":rocket: Build"
+      command:
+        - if: build.pull_request.master
+        - npm publish ../regime_js/ --access public --dry-run

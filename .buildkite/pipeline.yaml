@@ -5,8 +5,9 @@ steps:
       - npm run-script buildKiteTest
   - label: ":rocket: package test"
     command:
-      - git clone git@github.com:the-new-bash/regime_js.git
-      - npm publish regime_js --access public --dry-run
+      - echo $(ls)
+      - echo $(pwd)
+      - npm publish ../regime_js --access public --dry-run
   - label: ":rocket: Build"
     if: build.branch == "master"
     command:

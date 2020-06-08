@@ -20,8 +20,8 @@ let WBAId;
 before(async () => {
   let ANZarr = await getProducts.getProductsArray("ANZ", 1);
   ANZId = ANZarr[0].productId;
-  //let CBAarr = await getProducts.getProductsArray("CBA", 1);
-  //let CBAId = arr[0].productId;
+  let CBAarr = await getProducts.getProductsArray("CBA", 1);
+  CBAId = CBAarr[0].productId;
   let NABArr = await getProducts.getProductsArray("NAB", 1);
   NABId = NABArr[0].productId;
   let WBAarr = await getProducts.getProductsArray("WBA", 1);
@@ -35,8 +35,8 @@ describe("functional tests for get product details function", () => {
     expect(res.data.productId).to.equal(ANZId);
     expect(res).to.have.property("data");
   });
-  //Endpoint currently down
-  it.skip("should return the details of the specified product ID for CBA", async () => {
+
+  it("should return the details of the specified product ID for CBA", async () => {
     res = await getProductDetails.getProductDetails("CBA", 1, CBAId);
     expect(res).to.be.an("object");
     expect(res.data.productId).to.equal(CBAId);

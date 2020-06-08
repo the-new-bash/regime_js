@@ -15,7 +15,7 @@ let res;
 describe("functional tests for get products", () => {
   describe("functional tests for callGetProductsApi() Function", () => {
     //CBA endpoint currently down
-    it.skip("should call and recieve a valid response from the CBA endpoint", async () => {
+    it("should call and recieve a valid response from the CBA endpoint", async () => {
       res = await getProducts.callGetProductsApi("CBA", 1);
       expect(res).to.be.an("object");
       expect(res).to.have.property("data");

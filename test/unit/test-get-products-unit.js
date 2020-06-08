@@ -12,26 +12,26 @@ const expect = chai.expect;
 let res;
 
 describe("unit tests for get products", () => {
-  describe("unit tests for callGetProductsApi() Function", () => {
+  describe("unit tests for callGetProductsAPI() Function", () => {
     it("should throw an error when passed a bank that is not supported", async () => {
       return expect(
-        getProducts.callGetProductsApi("notABank", 1)
+        getProducts.callGetProductsAPI("notABank", 1)
       ).to.eventually.be.rejectedWith(Error);
     });
 
     it("should throw an error when not passed a paramater for xv", async () => {
       return expect(
-        getProducts.callGetProductsApi("ANZ")
+        getProducts.callGetProductsAPI("ANZ")
       ).to.eventually.be.rejectedWith(Error);
     });
     it("should throw an error when not passed an argument for bank", async () => {
       return expect(
-        getProducts.callGetProductsApi(null, 1)
+        getProducts.callGetProductsAPI(null, 1)
       ).to.eventually.be.rejectedWith(Error);
     });
     it("should accept and optional paramaters and return an appropriate response", async () => {
-      let fullRes = await getProducts.callGetProductsApi("ANZ", 1);
-      res = await getProducts.callGetProductsApi("ANZ", 1, {
+      let fullRes = await getProducts.callGetProductsAPI("ANZ", 1);
+      res = await getProducts.callGetProductsAPI("ANZ", 1, {
         "product-category": "TRANS_AND_SAVINGS_ACCOUNTS",
       });
       expect(res).to.be.an("object");
@@ -42,7 +42,7 @@ describe("unit tests for get products", () => {
   });
   describe("unit tests for getProductsArray() Function", () => {
     it("should return only an array", async () => {
-      let fullRes = await getProducts.callGetProductsApi("ANZ", 1);
+      let fullRes = await getProducts.callGetProductsAPI("ANZ", 1);
       let len = fullRes.meta.totalRecords;
       res = await getProducts.getProductsArray("ANZ", 1);
       expect(Array.isArray(res));

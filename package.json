@@ -16,7 +16,7 @@
     "name": "Nikki Renvoize",
     "url": "https://github.com/NikkiRen"
   },
-  "license": "ISC",
+  "license": "MIT",
   "bin": {
     "regime": "./cli.js"
   },

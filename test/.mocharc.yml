@@ -1,3 +1,3 @@
-timeout: false
+timeout: 50000
 color: true
 slow: 0

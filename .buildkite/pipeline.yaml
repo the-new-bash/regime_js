@@ -1,0 +1,12 @@
+steps:
+  - label: ":hammer: Test"
+    command:
+      - npm install
+      - npm run-script buildKiteTest
+  - label: ":package: Publish Dry Run"
+    command:
+      - npm publish --access public --dry-run
+  - label: ":rocket: Publish"
+    if: build.branch == "master"
+    command:
+      - npm publish regime_js --access public

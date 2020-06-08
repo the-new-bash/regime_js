@@ -48,6 +48,8 @@ To only run the unit tests
 $ npm run-script unitTest
 ```
 
+A mochawesome report for each test type will be automatically generated and stored in the root directory.
+
 ## Functions
 
 The functions available for use

@@ -18,7 +18,7 @@
   },
   "license": "MIT",
   "bin": {
-    "regime": "./cli.js"
+    "regime": "./bin/cli.js"
   },
   "bugs": {
     "url": "https://github.com/the-new-bash/regime_js/issues"

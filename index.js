@@ -1,8 +1,8 @@
-'use strict'
+"use strict";
 
-const getProducts = require('./lib/get-products.js')
-const getProductDetails = require('./lib/get-product-details.js')
+const getProducts = require("./lib/get-products.js");
+const getProductDetails = require("./lib/get-product-details.js");
 
 exports.callGetProductsApi = getProducts.callGetProductsApi;
-exports.getAllProducts = getProducts.getProductsArray;
+exports.getProductsArray = getProducts.getProductsArray;
 exports.callGetProductDetailsApi = getProductDetails.getProductDetails;

@@ -15,7 +15,7 @@ $ npm install regime_js
 Once installed the package can be used from the command line Example:
 
 ```bash
-$ regime getAllProducts ANZ 1
+$ regime getProductArray ANZ 1
 ```
 
 Will return the entire products array for ANZ xv 1
@@ -58,11 +58,11 @@ The functions available for use
 
 ## Get Products API Functions
 
-### getAllProducts()
+### getProductsArray()
 
-`getAllProducts(bank, xv, [xvmin] [effective], [updated-since], [brand], [product-category], [page"], [page-size]) => Promise`
+`getProductsArray(bank, xv, [xvmin] [effective], [updated-since], [brand], [product-category], [page"], [page-size]) => Promise`
 
-The getAllProducts() function calls the requested bank's endpoint with the requested filters, and automatically paginates to return the entire products array. This function cannot be combined with user pagination. All Optional Paramaters must be passed in as a key value pair object with the name and the value. Please see [parameters](#Supported-Parameters) section for details of optional supported input.
+The getProductsArray() function calls the requested bank's endpoint with the requested filters, and automatically paginates to return the entire products array. This function cannot be combined with user pagination. All Optional Paramaters must be passed in as a key value pair object with the name and the value. Please see [parameters](#Supported-Parameters) section for details of optional supported input.
 
 **_Examples_**
 
@@ -71,7 +71,7 @@ const regime = require("regime_js");
 async function printBankProducts() {
   let WBAProducts;
   try {
-    WBAProducts = await regime.getAllProducts("WBA", 1, {
+    WBAProducts = await regime.getProductsArray("WBA", 1, {
       "product-category": "TRANS_AND_SAVINGS_ACCOUNTS",
     });
   } catch (error) {
@@ -100,24 +100,25 @@ Example Array member
 }
 ```
 
-The below will do the same from the command line:
+The below will do the same from the command line with an optional parameter included:
 
 ```bash
-regime getAllProducts WBA 1 {{"product-category":"TRANS_AND_SAVINGS_ACCOUNTS"}}
+regime getProductArray WBA 1 {{"product-category":"TRANS_AND_SAVINGS_ACCOUNTS"}}
 ```
 
 ### callGetProductsApi()
 
-`getAllProducts(bank, xv, [xvmin] [page-size], [page], [effective], [updated-since], [brand], [product-category]) => Promise`
+`getProductsArray(bank, xv, [xvmin] [page-size], [page], [effective], [updated-since], [brand], [product-category]) => Promise`
 The CallGetProductsApi() function directly calls the endpoint of the specified bank using the specified version number. Any number or combination of CDR speficed filtering values may be used. The function will return the unfiltered response object. Please see [parameters](#Supported-Parameters) section for details of supported input.
 **_Examples_**
 Running the code below
 
 ```js
+const regime = require("regime_js");
 async function getProducts() {
   let res;
   try {
-    res = await callGetProductsApi("ANZ", 1);
+    res = await regime.callGetProductsApi("ANZ", 1);
   } catch (error) {
     console.log(error);
   }
@@ -148,13 +149,12 @@ will return something like this:
 From command line
 
 ```bash
-$ regime callGetProductsAPI ANZ 1
+$ regime callProductsAPI ANZ 1
 ```
 
 ### Get Product details API Functions
 
-</br>
-*coming Soon*
+These functions use the product details endpoint for the specifed bank to return the specified data.
 
 ### callGetProductDetails()
 
@@ -167,10 +167,11 @@ The callGetProductDetails() function calls the specified bank endpoint, for the 
 Running the code below
 
 ```js
+const regime = require("regime_js");
 async function getProductDetails(){
 let res
 try {
-    res = await callGetProductDetails('ANZ', 1'3a86f9e4-1b41-4222-9091-5934d1fc9178')
+    res = await regime.callGetProductDetails('ANZ', 1'3a86f9e4-1b41-4222-9091-5934d1fc9178')
     } catch(error) {
     console.log(error)
 }

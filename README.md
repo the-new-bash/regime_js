@@ -67,17 +67,18 @@ The getAllProducts() function calls the requested bank's endpoint with the reque
 **_Examples_**
 
 ```js
-const regime = require('regime-js')
-async function printBankProducts(){
-  let WBAProducts
+const regime = require("regime_js");
+async function printBankProducts() {
+  let WBAProducts;
   try {
-    WBAProducts = await regime.getAllProducts('WBA',1 {"product-category":"TRANS_AND_SAVINGS_ACCOUNTS"})
-
-  }catch (error) {
-    console.log(error)
+    WBAProducts = await regime.getAllProducts("WBA", 1, {
+      "product-category": "TRANS_AND_SAVINGS_ACCOUNTS",
+    });
+  } catch (error) {
+    console.log(error);
   }
-  console.log(WBAProducts)
-    }
+  console.log(WBAProducts);
+}
 ```
 
 This will print the complete product array for all Transaction and Savings account supplied by the Westpac open banking API endpoint

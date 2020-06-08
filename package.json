@@ -7,7 +7,7 @@
     "test": "npm audit --audit-level=moderate && eslint . && nyc mocha test/**/*.js --reporter mochawesome",
     "funcTest": "mocha test/functional/**/*.js --reporter mochawesome",
     "unitTest": "mocha test/unit/**/*.js --reporter mochawesome",
-    "buildKiteTest": "npm audit --audit-level=moderate && eslint . && nyc mocha test/unit/**/*.js --reporter mochawesome"
+    "buildKiteTest": "npm audit --audit-level=moderate && eslint . && nyc mocha test/unit/**/*.js"
   },
   "repository": {
     "type": "git",

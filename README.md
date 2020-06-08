@@ -9,7 +9,7 @@ This client allows you to call the existing endopoints for the Australion Open B
 ## Installation and useage
 
 ```bash
-$ npm install regime
+$ npm install regime_js
 ```
 
 Once installed the package can be used from the command line Example:
@@ -25,7 +25,7 @@ Will return the entire products array for ANZ xv 1
 To use in your project require the package:
 
 ```js
-const regime = require("regime-js");
+const regime = require("regime_js");
 ```
 
 ## Testing

@@ -1,4 +1,4 @@
 steps:
   - label: ":hammmer: Test"
     command:
-      - npm install && npm test
+      - "npm install && npm test"

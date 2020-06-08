@@ -9,4 +9,4 @@ steps:
   - label: ":rocket: Publish"
     if: build.branch == "master"
     command:
-      - npm publish regime_js --access public
+      - npx publish regime_js --access public

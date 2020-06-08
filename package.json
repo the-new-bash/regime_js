@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm audit --audit-level=moderate && eslint . && nyc mocha test/**/*.js --reporter mochawesome",
     "funcTest": "mocha test/functional/**/*.js --reporter mochawesome",
-    "unitTest": "mocha test/unit/**/*.js --reporter mochawesome"
+    "unitTest": "mocha test/unit/**/*.js --reporter mochawesome",
+    "buildKiteTest": "npm audit --audit-level=moderate && eslint . && nyc mocha test/unit/**/*.js --reporter mochawesome"
   },
   "repository": {
     "type": "git",
@@ -25,8 +26,8 @@
   },
   "homepage": "https://github.com/the-new-bash/regime_js#readme",
   "dependencies": {
-    "commander": "^4.1.1",
-    "request": "^2.88.2",
+    "commander": "^4.0.1",
+    "request": "^2.88.0",
     "request-promise-native": "^1.0.8"
   },
   "devDependencies": {

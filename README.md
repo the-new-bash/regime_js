@@ -2,7 +2,7 @@
 
 [![Build status](https://badge.buildkite.com/85ad47463eff33c35b2fb6e8009eb959f7e1f09de61401e3cf.svg)](https://buildkite.com/the-new-bash/regime-js-test-and-publish)
 
-Australian Open Banking API NodeJS client.
+Australian Open Banking API NodeJS client. 
 
 This client allows you to call the existing endopoints for the Australion Open Banking Consumer Data Right. All functions are asyncronous and promise native.
 

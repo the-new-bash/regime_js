@@ -4,6 +4,6 @@ steps:
       - npm install
       - npm test
   - label: ":rocket: Build"
-    if: build.pull_request.base_branch == master
+    if: build.pull_request.base_branch == "master"
     command:
       - npm publish ../regime_js/ --access public --dry-run

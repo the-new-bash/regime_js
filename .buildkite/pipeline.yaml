@@ -5,8 +5,8 @@ steps:
       - npm run-script buildKiteTest
   - label: ":rocket: package test"
     command:
-      - cd ..
-      - npm publish regime_js --access public --dry-run
+      - rm -rf package-lock.json
+      - npm publish ../regime_js --access public --dry-run
   - label: ":rocket: Build"
     if: build.branch == "master"
     command:
